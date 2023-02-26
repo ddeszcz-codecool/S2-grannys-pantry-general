@@ -9,6 +9,7 @@ Point 8 - PUT {{ pantry_api_path}}/{{pantry_id}}/{{basket_name}} with {"fruits" 
 Point 9 - GET  {{ pantry_api_path}}/{{pantry_id}}/{{basket_name}}
 Point 10 - DELETE {{ pantry_api_path}}/{{pantry_id}}/{{basket_name}}
 Point 11 - Create Restore Basket folder. The folder contains requests: Create new basket, Fill basket, Get content of basket.
+Point 12 - Restore basket
 
 
 
