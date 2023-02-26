@@ -1,0 +1,316 @@
+{
+	"info": {
+		"_postman_id": "2e904392-267c-43ab-b672-2961c86e26dd",
+		"name": "Granny's Pantry",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23424843"
+	},
+	"item": [
+		{
+			"name": "Restore Basket",
+			"item": [
+				{
+					"name": "Create new basket with Variables",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{ pantry_api_path}}/{{pantry_id}}/{{basket_name}}",
+							"host": [
+								"{{ pantry_api_path}}"
+							],
+							"path": [
+								"{{pantry_id}}",
+								"{{basket_name}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Fill Basket Copy",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"fruits\" : [\"apple\", \"banana\", \"peach\"]}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{ pantry_api_path}}/{{pantry_id}}/{{basket_name}}",
+							"host": [
+								"{{ pantry_api_path}}"
+							],
+							"path": [
+								"{{pantry_id}}",
+								"{{basket_name}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get content of basket Copy",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{ pantry_api_path}}/{{pantry_id}}/{{basket_name}}",
+							"host": [
+								"{{ pantry_api_path}}"
+							],
+							"path": [
+								"{{pantry_id}}",
+								"{{basket_name}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"//Check if request status is OK",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"//Check if Pantry API path variable is used in the URL",
+							"pm.test(\"Pantry API path variable used\", function () {",
+							"    pm.expect(String(pm.request.url)).to.include(pm.variables.get(\"pantry_api_path\"));",
+							"});",
+							"",
+							"//Check if Pantry ID variable is used in the URL",
+							"pm.test(\"Pantry id variable used\", function () {",
+							"    pm.expect(String(pm.request.url)).to.include(pm.variables.get(\"pantry_id\"));",
+							"});",
+							"",
+							"//Check if Basket name variable is used in the URL",
+							"//The .search() method returns -1 by default if no match found for \"basket\" in the URL (e.g. for getting account details)",
+							" if(String(pm.request.url).search(\"basket\") != -1){",
+							"pm.test(\"Basket name variable used when needed\", function () {",
+							"    pm.expect(String(pm.request.url)).to.include(pm.variables.get(\"basket_name\"));",
+							"    });",
+							"}"
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Get details",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://getpantry.cloud/apiv1/pantry/38f86c2a-412a-4347-a965-a9ea56886de4",
+					"protocol": "https",
+					"host": [
+						"getpantry",
+						"cloud"
+					],
+					"path": [
+						"apiv1",
+						"pantry",
+						"38f86c2a-412a-4347-a965-a9ea56886de4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create new basket",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://getpantry.cloud/apiv1/pantry/38f86c2a-412a-4347-a965-a9ea56886de4/basket/BigBasket",
+					"protocol": "https",
+					"host": [
+						"getpantry",
+						"cloud"
+					],
+					"path": [
+						"apiv1",
+						"pantry",
+						"38f86c2a-412a-4347-a965-a9ea56886de4",
+						"basket",
+						"BigBasket"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get details with variables",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{ pantry_api_path}}/{{pantry_id}}",
+					"host": [
+						"{{ pantry_api_path}}"
+					],
+					"path": [
+						"{{pantry_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create new basket with Variables Copy",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{ pantry_api_path}}/{{pantry_id}}/{{basket_name}}",
+					"host": [
+						"{{ pantry_api_path}}"
+					],
+					"path": [
+						"{{pantry_id}}",
+						"{{basket_name}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Fill Basket",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"fruits\" : [\"apple\", \"banana\", \"peach\"]}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{ pantry_api_path}}/{{pantry_id}}/{{basket_name}}",
+					"host": [
+						"{{ pantry_api_path}}"
+					],
+					"path": [
+						"{{pantry_id}}",
+						"{{basket_name}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get content of basket",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{ pantry_api_path}}/{{pantry_id}}/{{basket_name}}",
+					"host": [
+						"{{ pantry_api_path}}"
+					],
+					"path": [
+						"{{pantry_id}}",
+						"{{basket_name}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete basket",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{ pantry_api_path}}/{{pantry_id}}/{{basket_name}}",
+					"host": [
+						"{{ pantry_api_path}}"
+					],
+					"path": [
+						"{{pantry_id}}",
+						"{{basket_name}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"//Check if request status is OK",
+					"pm.test(\"Status code is 200\", function () {",
+					"    pm.response.to.have.status(200);",
+					"});",
+					"",
+					"//Check if Pantry API path variable is used in the URL",
+					"pm.test(\"Pantry API path variable used\", function () {",
+					"    pm.expect(String(pm.request.url)).to.include(pm.variables.get(\"pantry_api_path\"));",
+					"});",
+					"",
+					"//Check if Pantry ID variable is used in the URL",
+					"pm.test(\"Pantry id variable used\", function () {",
+					"    pm.expect(String(pm.request.url)).to.include(pm.variables.get(\"pantry_id\"));",
+					"});",
+					"",
+					"//Check if Basket name variable is used in the URL",
+					"//The .search() method returns -1 by default if no match found for \"basket\" in the URL (e.g. for getting account details)",
+					" if(String(pm.request.url).search(\"basket\") != -1){",
+					"pm.test(\"Basket name variable used when needed\", function () {",
+					"    pm.expect(String(pm.request.url)).to.include(pm.variables.get(\"basket_name\"));",
+					"    });",
+					"}"
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "pantry_id",
+			"value": "38f86c2a-412a-4347-a965-a9ea56886de4"
+		},
+		{
+			"key": " pantry_api_path",
+			"value": "https://getpantry.cloud/apiv1/pantry"
+		},
+		{
+			"key": "basket_name",
+			"value": "basket/BigBasket"
+		}
+	]
+}
