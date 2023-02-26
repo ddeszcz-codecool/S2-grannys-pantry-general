@@ -7,6 +7,8 @@ Point 6 - POST request with URL:  https://getpantry.cloud/apiv1/pantry/38f86c2a-
 Point 7 - GET  {{ pantry_api_path}}/{{pantry_id}}, POST  {{ pantry_api_path}}/{{pantry_id}}/{{basket_name}}
 Point 8 - PUT {{ pantry_api_path}}/{{pantry_id}}/{{basket_name}} with {"fruits" : ["apple", "banana", "peach"]}
 Point 9 - GET  {{ pantry_api_path}}/{{pantry_id}}/{{basket_name}}
+Point 10 - DELETE {{ pantry_api_path}}/{{pantry_id}}/{{basket_name}}
+
 
 
 
